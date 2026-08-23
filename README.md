@@ -1,9 +1,9 @@
-# TFCS-1: Teensy Flight Computer & Climate Suite
+
+readme = """# TFCS-1: Teensy Flight Computer & Climate Suite
 
 [![Platform](https://img.shields.io/badge/Platform-Teensy%204.1-orange.svg)](#hardware)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-yellow.svg)](#status)
 [![Age](https://img.shields.io/badge/Built%20By-16%20Year%20Old-blue.svg)](#author)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
 > **WARNING: Active Development**
 > Expect breaking changes to hardware wiring and software builds as this project evolves through rapid field-testing.
@@ -12,6 +12,9 @@
 > All system architecture, hardware selection, circuit design, and physical builds are 100% designed and wired by me. AI was used only as a sounding board for code formatting, debugging, and documentation polish. The solder and flight logic are entirely human-built.
 
 **TFCS-1** is an open-source flight controller and environmental sensing platform built around the **Teensy 4.1**. It combines high-rate flight control with real-time atmospheric data logging for experimental aircraft and environmental monitoring.
+
+- **GitHub:** [github.com/R1th1shwork/TFCS-1](https://github.com/R1th1shwork/TFCS-1)
+- **Stardance:** [stardance.hackclub.com/projects/49798](https://stardance.hackclub.com/projects/49798)
 
 ---
 
@@ -31,7 +34,6 @@
 - [Equipment Status](#equipment-status)
 - [Contributing](#contributing)
 - [Author](#author)
-- [License](#license)
 
 ---
 
@@ -98,7 +100,6 @@ Because I learned from open-source projects. Because someone else out there is 1
 | Current IMU | MPU-6050 | 6-DOF (Accel + Gyro) | Owned |
 | Future IMU | ICM-20948 | 9-DOF (Accel + Gyro + Mag) | **BORROWED** |
 | GPS Module | NEO-M8N | UART, 25Hz update | Owned |
-| Barometer | BMP390 | I2C, +/-0.5m accuracy | **BORROWED** |
 
 ### Actuators
 
@@ -278,7 +279,6 @@ P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 |-----------|--------|--------|
 | Teensy 4.1 | **BORROWED** | Tutor (3 months) |
 | ICM-20948 | **BORROWED** | Tutor (3 months) |
-| BMP390 | **BORROWED** | Tutor (3 months) |
 | MPU-6050 | Owned | - |
 | Arduino Uno | Owned | - |
 | NEO-M8N GPS | Owned | - |
@@ -288,7 +288,7 @@ P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 | ESC | Owned | - |
 | Final Airframe | Funding Requested | Awaiting approval |
 
-> **Special Thanks:** A huge thank you to my tutor for lending me the expensive components (Teensy 4.1, ICM-20948, BMP390). Without their support, this project would not be possible.
+> **Special Thanks:** A huge thank you to my tutor for lending me the expensive components (Teensy 4.1, ICM-20948). Without their support, this project would not be possible.
 
 ---
 
@@ -315,19 +315,14 @@ This is open-source and contributions are welcome.
 
 **Rithish** -- 16-year-old maker with a passion for flight and embedded systems
 
-- GitHub: github.com/yourusername
-- Project: github.com/yourusername/TFCS-1
+- GitHub: [github.com/R1th1shwork](https://github.com/R1th1shwork)
+- Project: [github.com/R1th1shwork/TFCS-1](https://github.com/R1th1shwork/TFCS-1)
+- Stardance: [stardance.hackclub.com/projects/49798](https://stardance.hackclub.com/projects/49798)
 
 **Acknowledgments:**
 - My Tutor -- For lending critical components
 - The Arduino Community -- For open-source libraries and support
 - The Teensy Community -- For the incredible Teensy platform
-
----
-
-## License
-
-This project is licensed under the MIT License.
 
 ---
 
@@ -339,3 +334,10 @@ This project is licensed under the MIT License.
 *Fly safe, have fun, and learn something new.*
 
 **Last Updated:** August 2026
+"""
+
+with open('/mnt/agents/output/README.md', 'w', encoding='utf-8') as f:
+    f.write(readme)
+
+print("Done! Saved to /mnt/agents/output/README.md")
+print(f"Total length: {len(readme)} characters")
