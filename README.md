@@ -5,11 +5,11 @@
 [![Age](https://img.shields.io/badge/Built%20By-16%20Year%20Old-blue.svg)](#author)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
-&gt; **WARNING: Active Development**
-&gt; Expect breaking changes to hardware wiring and software builds as this project evolves through rapid field-testing.
+> **WARNING: Active Development**
+> Expect breaking changes to hardware wiring and software builds as this project evolves through rapid field-testing.
 
-&gt; **AI Transparency Disclosure**
-&gt; All system architecture, hardware selection, circuit design, and physical builds are 100% designed and wired by me. AI was used only as a sounding board for code formatting, debugging, and documentation polish. The solder and flight logic are entirely human-built.
+> **AI Transparency Disclosure**
+> All system architecture, hardware selection, circuit design, and physical builds are 100% designed and wired by me. AI was used only as a sounding board for code formatting, debugging, and documentation polish. The solder and flight logic are entirely human-built.
 
 **TFCS-1** is an open-source flight controller and environmental sensing platform built around the **Teensy 4.1**. It combines high-rate flight control with real-time atmospheric data logging for experimental aircraft and environmental monitoring.
 
@@ -131,10 +131,10 @@ Because I learned from open-source projects. Because someone else out there is 1
 
 | Axis | Surface | Pin | Range | Response |
 |------|---------|-----|-------|----------|
-| Pitch | Elevator | 5 | 40-140 deg | Nose Down -&gt; UP |
-| Roll | Left Aileron | 9 | 40-140 deg | Tilt Left -&gt; UP |
-| Roll | Right Aileron | 10 | 40-140 deg | Tilt Left -&gt; DOWN |
-| Yaw | Rudder | 6 | 60-120 deg | Tilt Left -&gt; Left |
+| Pitch | Elevator | 5 | 40-140 deg | Nose Down -> UP |
+| Roll | Left Aileron | 9 | 40-140 deg | Tilt Left -> UP |
+| Roll | Right Aileron | 10 | 40-140 deg | Tilt Left -> DOWN |
+| Yaw | Rudder | 6 | 60-120 deg | Tilt Left -> Left |
 
 **Neutral position for all servos:** 90 deg
 
@@ -170,7 +170,172 @@ Because I learned from open-source projects. Because someone else out there is 1
 filteredPitch = (ALPHA * rawPitch) + ((1.0 - ALPHA) * filteredPitch);
 
 // Deadband to prevent servo buzzing
-if (abs(filteredPitch) &lt; 0.8) elevatorPos = 90;
+if (abs(filteredPitch) < 0.8) elevatorPos = 90;
 
 // Map to servo positions
 elevatorPos = map(filteredPitch, -20, 20, 140, 40);
+```
+
+---
+
+## Setup
+
+### 1. Install Libraries
+
+```cpp
+#include <Wire.h>    // I2C Communication
+#include <Servo.h>   // Servo Control
+```
+
+### 2. Upload
+
+- Select board: Arduino Uno or Teensy 4.1
+- Select correct COM port
+- Upload
+- Open Serial Monitor at 115200 baud
+
+### 3. Test Procedure
+
+| Test | Expected Behavior |
+|------|-------------------|
+| Hold board level | All servos at 90 deg |
+| Tilt nose down | Elevator goes UP (40 deg) |
+| Tilt nose up | Elevator goes DOWN (140 deg) |
+| Tilt left | Left aileron UP, Right aileron DOWN |
+| Tilt right | Left aileron DOWN, Right aileron UP |
+
+---
+
+## Telemetry
+
+```
+P:0.0 deg (Elev:90 deg) | R:0.0 deg (Rudd:90 deg) | A:90 deg
+P:-5.2 deg (Elev:77 deg) | R:0.0 deg (Rudd:90 deg) | A:77 deg
+P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
+```
+
+**Key:**
+- P: Filtered Pitch Angle (degrees)
+- Elev: Elevator Position (0-180)
+- R: Filtered Roll Angle (degrees)
+- Rudd: Rudder Position (0-180)
+- A: Aileron Position (0-180)
+
+---
+
+## Dev Log
+
+| Log | Milestone |
+|-----|-----------|
+| #1 | Teensy 4.1 powered on. Orange LED blinked. ICM-20948 failed to respond. |
+| #2 | ICM-20948 still dead. Found at 0x68 but hangs on read. Need 4.7k pull-up resistors. |
+| #3 | Switched to MPU-6050. Worked first try. Servos move when board tilts. |
+| #4 | MPU-6050 streaming roll and pitch data. Numbers moving on Serial Monitor. |
+| #5 | Both wing servos working on pins 9 and 10. Smooth 40-90-140 deg movement. |
+| #6 | Salvaged wings from old RC plane. Servos tested and working. |
+| #7 | Flight controller ALIVE. Roll data drives ailerons correctly. Pin 8 dead, pins 9/10 confirmed. |
+| #8 | Rudder and elevator control logic mapped. Full 3-axis control planned. |
+| #9 | Traveling. Planned power system: ESC BEC -> servos, UBEC -> Teensy 4.1. |
+
+---
+
+## Challenges & Fixes
+
+| Challenge | Solution |
+|-----------|----------|
+| ICM-20948 not working | Switched to MPU-6050 |
+| Servo jitter | Added low-pass filter (ALPHA 0.15) |
+| Servo buzzing at level | Added deadband (0.8 deg) |
+| Pin 8 not working with servo | Switched to Pin 5, 6, 9, 10 |
+| MPU not responding | Fixed wiring, added debug code |
+| Servos moving same direction | Used mirror mounting logic |
+| I2C hanging | Added pull-up resistors |
+
+---
+
+## Roadmap
+
+### Immediate
+- [ ] Teensy 4.1 full integration
+- [ ] ICM-20948 9-DOF sensor fusion
+- [ ] SD card data logging
+- [ ] GPS integration (NEO-M8N)
+- [ ] FPV system (5.8GHz)
+
+### Future
+- [ ] Custom PCB design
+- [ ] Full 6-axis sensor fusion (Madgwick/Mahony)
+- [ ] MAVLink telemetry protocol
+- [ ] Waypoint navigation
+- [ ] Ground Station (Android/PC)
+- [ ] AI-assisted flight tuning
+
+---
+
+## Equipment Status
+
+| Component | Status | Source |
+|-----------|--------|--------|
+| Teensy 4.1 | **BORROWED** | Tutor (3 months) |
+| ICM-20948 | **BORROWED** | Tutor (3 months) |
+| BMP390 | **BORROWED** | Tutor (3 months) |
+| MPU-6050 | Owned | - |
+| Arduino Uno | Owned | - |
+| NEO-M8N GPS | Owned | - |
+| E-flite Apprentice S1E | Owned | - |
+| Servos (4x) | Owned | From old plane |
+| 7A UBEC | Owned | - |
+| ESC | Owned | - |
+| Final Airframe | Funding Requested | Awaiting approval |
+
+> **Special Thanks:** A huge thank you to my tutor for lending me the expensive components (Teensy 4.1, ICM-20948, BMP390). Without their support, this project would not be possible.
+
+---
+
+## Contributing
+
+This is open-source and contributions are welcome.
+
+**How to contribute:**
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push and open a Pull Request
+
+**Areas needing help:**
+- Testing on different hardware
+- Documentation improvements
+- PCB design
+- Sensor fusion algorithms
+- Telemetry protocols
+
+---
+
+## Author
+
+**Rithish** -- 16-year-old maker with a passion for flight and embedded systems
+
+- GitHub: github.com/yourusername
+- Project: github.com/yourusername/TFCS-1
+
+**Acknowledgments:**
+- My Tutor -- For lending critical components
+- The Arduino Community -- For open-source libraries and support
+- The Teensy Community -- For the incredible Teensy platform
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+> **Disclaimer:** This project is for educational and experimental purposes only. Always test flight hardware thoroughly before actual flight operations. The authors are not responsible for any damages or injuries resulting from the use of this hardware or software.
+
+---
+
+*Built with passion, powered by curiosity, and tested on borrowed equipment.*
+*Fly safe, have fun, and learn something new.*
+
+**Last Updated:** August 2026
