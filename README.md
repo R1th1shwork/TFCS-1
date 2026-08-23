@@ -1,5 +1,4 @@
-
-readme = """# TFCS-1: Teensy Flight Computer & Climate Suite
+"""# TFCS-1: Teensy Flight Computer & Climate Suite
 
 [![Platform](https://img.shields.io/badge/Platform-Teensy%204.1-orange.svg)](#hardware)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-yellow.svg)](#status)
