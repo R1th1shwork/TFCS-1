@@ -333,10 +333,4 @@ This is open-source and contributions are welcome.
 *Fly safe, have fun, and learn something new.*
 
 **Last Updated:** August 2026
-"""
 
-with open('/mnt/agents/output/README.md', 'w', encoding='utf-8') as f:
-    f.write(readme)
-
-print("Done! Saved to /mnt/agents/output/README.md")
-print(f"Total length: {len(readme)} characters")
