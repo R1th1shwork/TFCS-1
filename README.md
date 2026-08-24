@@ -27,9 +27,9 @@
 - [Software](#software)
 - [Setup](#setup)
 - [Telemetry](#telemetry)
-- [Dev Log](#dev-log)
 - [Challenges & Fixes](#challenges--fixes)
 - [Roadmap](#roadmap)
+- [Future Funding & BOM](#future-funding--bom)
 - [Equipment Status](#equipment-status)
 - [Contributing](#contributing)
 - [Author](#author)
@@ -45,22 +45,22 @@ This project exists because:
 - I want to **open-source** every finding, failure, and fix so the next builder does not start from zero
 - I believe the best way to learn is to build, break, and rebuild -- one crash at a time
 
-Schematics, PCB designs, flight videos, and full telemetry logs are coming soon.
+Schematics are currently in build and will be released soon. Code will be posted as soon as it is fully tested and validated on the plane.
 
 ---
 
 ## Story / Behind the Scenes
 
-**The Beginning**
+### The Beginning
 The Teensy 4.1 arrived from my tutor -- a 600MHz beast I had been reading about for months. The first time the orange LED blinked, I knew this was real. Then came the ICM-20948, the fancy 9-DOF IMU that was supposed to be the heart of the system. It did not work. I2C scanner found it at 0x68, but the moment I tried to read data, it hung. No pull-up resistors, maybe a logic level issue, maybe just inexperience. I spent hours staring at wires that refused to talk.
 
-**The Breakthrough**
+### The Breakthrough
 I switched to the MPU-6050. Cheap, common, and suddenly -- it just worked. Data flowed. Numbers moved when I tilted the board. I connected the first servo and watched a control surface respond to my hands. That moment, seeing physics turn into servo motion, is when TFCS-1 became more than a project. It became a flight controller.
 
-**The Reality Check**
+### The Reality Check
 Not everything worked. Pin 8 was dead for servos. The ICM-20948 still sits on my desk, waiting for 4.7k resistors. I salvaged wings from an old RC plane, pulled servos from crashed airframes, and learned that "working" in electronics means "working after the 47th try." Every buzz, every jitter, every frozen I2C bus taught me something.
 
-**Why Open Source?**
+### Why Open Source?
 Because I learned from open-source projects. Because someone else out there is 16 years old, staring at a breadboard, wondering why their sensor won't respond. This is for them. This is for the builders who learn by breaking things.
 
 ---
@@ -69,22 +69,24 @@ Because I learned from open-source projects. Because someone else out there is 1
 
 | Module | Status | Notes |
 |--------|--------|-------|
-| MPU-6050 Roll + Pitch | [x] Done | Working reliably |
-| Elevator servo | [x] Done | Pin 5, 40-140 deg |
-| Rudder servo | [x] Done | Pin 6, 60-120 deg |
-| Aileron servos | [x] Done | Pin 9 & 10, 40-140 deg |
-| Low-pass filter (ALPHA=0.15) | [x] Done | Removes jitter |
-| Deadband (0.8 deg) | [x] Done | Stops servo buzzing |
-| Serial telemetry | [x] Done | 115200 baud |
-| Flight control logic | [x] Done | Roll + Pitch stabilization |
-| Teensy 4.1 integration | [~] In Progress | Borrowed unit |
-| ICM-20948 9-DOF fusion | [~] In Progress | Needs debugging |
-| SD card logging | [ ] Coming Soon | High-speed CSV |
-| GPS (NEO-M8N) | [ ] Coming Soon | Position tracking |
-| FPV (5.8GHz) | [ ] Coming Soon | Camera + VTX |
-| Custom PCB | [ ] Coming Soon | KiCad design |
+| MPU-6050 Roll + Pitch | ✅ Done | Working reliably |
+| Elevator servo | ✅ Done | Pin 5, 40-140 deg |
+| Rudder servo | ✅ Done | Pin 6, 60-120 deg |
+| Aileron servos | ✅ Done | Pin 9 & 10, 40-140 deg |
+| Low-pass filter (ALPHA=0.15) | ✅ Done | Removes jitter |
+| Deadband (0.8 deg) | ✅ Done | Stops servo buzzing |
+| Serial telemetry | ✅ Done | 115200 baud |
+| Flight control logic | ✅ Done | Roll + Pitch stabilization |
+| Teensy 4.1 integration | 🔄 In Progress | Borrowed unit |
+| ICM-20948 9-DOF fusion | 🔄 In Progress | Needs debugging |
+| SD card logging | ⏳ Coming Soon | High-speed CSV |
+| GPS (NEO-M8N) | ⏳ Coming Soon | Position tracking |
+| FPV (5.8GHz) | ⏳ Coming Soon | Camera + VTX |
+| Custom PCB | ⏳ Coming Soon | KiCad design |
 
 **Test Platform:** E-flite Apprentice S1E (1500mm wingspan, 840kv motor)
+
+> **Note:** The Apprentice is heavily damaged after a crash and cannot be flown. It is currently being used as a test body for bench experiments only.
 
 ---
 
@@ -189,10 +191,10 @@ elevatorPos = map(filteredPitch, -20, 20, 140, 40);
 
 ### 2. Upload
 
-- Select board: Arduino Uno or Teensy 4.1
-- Select correct COM port
-- Upload
-- Open Serial Monitor at 115200 baud
+1. Select board: **Arduino Uno** or **Teensy 4.1**
+2. Select correct COM port
+3. Upload
+4. Open Serial Monitor at **115200 baud**
 
 ### 3. Test Procedure
 
@@ -208,34 +210,18 @@ elevatorPos = map(filteredPitch, -20, 20, 140, 40);
 
 ## Telemetry
 
-```
+```text
 P:0.0 deg (Elev:90 deg) | R:0.0 deg (Rudd:90 deg) | A:90 deg
 P:-5.2 deg (Elev:77 deg) | R:0.0 deg (Rudd:90 deg) | A:77 deg
 P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 ```
 
 **Key:**
-- P: Filtered Pitch Angle (degrees)
-- Elev: Elevator Position (0-180)
-- R: Filtered Roll Angle (degrees)
-- Rudd: Rudder Position (0-180)
-- A: Aileron Position (0-180)
-
----
-
-## Dev Log
-
-| Log | Milestone |
-|-----|-----------|
-| #1 | Teensy 4.1 powered on. Orange LED blinked. ICM-20948 failed to respond. |
-| #2 | ICM-20948 still dead. Found at 0x68 but hangs on read. Need 4.7k pull-up resistors. |
-| #3 | Switched to MPU-6050. Worked first try. Servos move when board tilts. |
-| #4 | MPU-6050 streaming roll and pitch data. Numbers moving on Serial Monitor. |
-| #5 | Both wing servos working on pins 9 and 10. Smooth 40-90-140 deg movement. |
-| #6 | Salvaged wings from old RC plane. Servos tested and working. |
-| #7 | Flight controller ALIVE. Roll data drives ailerons correctly. Pin 8 dead, pins 9/10 confirmed. |
-| #8 | Rudder and elevator control logic mapped. Full 3-axis control planned. |
-| #9 | Traveling. Planned power system: ESC BEC -> servos, UBEC -> Teensy 4.1. |
+- **P:** Filtered Pitch Angle (degrees)
+- **Elev:** Elevator Position (0-180)
+- **R:** Filtered Roll Angle (degrees)
+- **Rudd:** Rudder Position (0-180)
+- **A:** Aileron Position (0-180)
 
 ---
 
@@ -272,22 +258,43 @@ P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 
 ---
 
+## Future Funding & BOM
+
+If I receive funding from Stardance, I plan to use it to purchase these components to fully test the capability of the Teensy 4.1 flight controller.
+
+| # | Item | Description | Option | Price (AED) | Price (USD) | Link |
+|---|------|-------------|--------|-------------|-------------|------|
+| 1 | Xfly X1300 Pusher FPV | Empty Airframe (No Electronics) | Airframe Only | 528.64 | 143.91 | 🔗 |
+| 2 | TERANTY 14.8V LiPo Battery | 4S 5200mAh 60C | T Plug / XT60 | 102.04 | 27.78 | 🔗 |
+| 3 | 2212 Brushless Motor | Fixed Wing Rear Shaft | KV1400 | 46.37 | 12.62 | 🔗 |
+| 4 | Mitoot Brushless 40A ESC | Speed Controller 2-4S | XT60 Plug (5V 3A UBEC) | 25.69 | 6.99 | 🔗 |
+| 5 | Gemfan RC Propellers Set | 8x4 Forward Oar | 8x4 Propeller | 7.53 | 2.05 | 🔗 |
+| 6 | DSPOWER 12g Digital Servos | Pack of 6 PCS | Metal Gear | 173.07 | 47.11 | 🔗 |
+| 7 | MPU-9250 GY-9250 9-Axle IMU | Gyro + Accel + Mag | 3~5V | 20.00 | 5.44 | 🔗 |
+| | **TOTAL ITEMS** | | | **903.34** | **245.90** | |
+| | **SHIPPING** | | | **48.90** | **13.31** | |
+| | **GRAND TOTAL** | | | **952.24** | **259.21** | |
+
+*Exchange Rate: 1 USD = 3.6725 AED*
+
+---
+
 ## Equipment Status
 
 | Component | Status | Source |
 |-----------|--------|--------|
-| Teensy 4.1 | **BORROWED** | Tutor (3 months) |
-| ICM-20948 | **BORROWED** | Tutor (3 months) |
+| Teensy 4.1 | BORROWED | Tutor (3 months) |
+| ICM-20948 | BORROWED | Tutor (3 months) |
 | MPU-6050 | Owned | - |
 | Arduino Uno | Owned | - |
 | NEO-M8N GPS | Owned | - |
-| E-flite Apprentice S1E | Owned | - |
+| E-flite Apprentice S1E | BROKEN | Crashed, used for bench testing |
 | Servos (4x) | Owned | From old plane |
 | 7A UBEC | Owned | - |
 | ESC | Owned | - |
-| Final Airframe | Funding Requested | Awaiting approval |
+| Xfly X1300 | Funding Requested | Awaiting Stardance approval |
 
-> **Special Thanks:** A huge thank you to my tutor for lending me the expensive components (Teensy 4.1, ICM-20948). Without their support, this project would not be possible.
+**Special Thanks:** A huge thank you to my tutor for lending me the expensive components (Teensy 4.1, ICM-20948). Without their support, this project would not be possible.
 
 ---
 
@@ -295,13 +302,15 @@ P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 
 This is open-source and contributions are welcome.
 
-**How to contribute:**
+### How to contribute:
+
 1. Fork the repository
 2. Create a feature branch
 3. Commit your changes
 4. Push and open a Pull Request
 
-**Areas needing help:**
+### Areas needing help:
+
 - Testing on different hardware
 - Documentation improvements
 - PCB design
@@ -314,23 +323,22 @@ This is open-source and contributions are welcome.
 
 **Rithish** -- 16-year-old maker with a passion for flight and embedded systems
 
-- GitHub: [github.com/R1th1shwork](https://github.com/R1th1shwork)
-- Project: [github.com/R1th1shwork/TFCS-1](https://github.com/R1th1shwork/TFCS-1)
-- Stardance: [stardance.hackclub.com/projects/49798](https://stardance.hackclub.com/projects/49798)
+- **GitHub:** [github.com/R1th1shwork](https://github.com/R1th1shwork)
+- **Project:** [github.com/R1th1shwork/TFCS-1](https://github.com/R1th1shwork/TFCS-1)
+- **Stardance:** [stardance.hackclub.com/projects/49798](https://stardance.hackclub.com/projects/49798)
 
-**Acknowledgments:**
-- My Tutor -- For lending critical components
-- The Arduino Community -- For open-source libraries and support
-- The Teensy Community -- For the incredible Teensy platform
+### Acknowledgments
+
+- **My Tutor** -- For lending critical components
+- **The Arduino Community** -- For open-source libraries and support
+- **The Teensy Community** -- For the incredible Teensy platform
 
 ---
 
 > **Disclaimer:** This project is for educational and experimental purposes only. Always test flight hardware thoroughly before actual flight operations. The authors are not responsible for any damages or injuries resulting from the use of this hardware or software.
 
----
-
 *Built with passion, powered by curiosity, and tested on borrowed equipment.*
+
 *Fly safe, have fun, and learn something new.*
 
 **Last Updated:** August 2026
-
