@@ -4,10 +4,10 @@
 [![Status](https://img.shields.io/badge/Status-Active%20Development-yellow.svg)](#status)
 [![Age](https://img.shields.io/badge/Built%20By-16%20Year%20Old-blue.svg)](#author)
 
-> **⚠️ WARNING: Active Development**
+> **WARNING: Active Development**
 > Expect breaking changes to hardware wiring and software builds as this project evolves through rapid field-testing.
 
-> **🤖 AI Transparency Disclosure**
+> **AI Transparency Disclosure**
 > All system architecture, hardware selection, circuit design, and physical builds are 100% designed and wired by me. AI was used only as a sounding board for code formatting, debugging, and documentation polish. The solder and flight logic are entirely human-built.
 
 **TFCS-1** is an open-source flight controller and environmental sensing platform built around the **Teensy 4.1**. It combines high-rate flight control with real-time atmospheric data logging for experimental aircraft and environmental monitoring.
@@ -17,16 +17,16 @@
 
 ---
 
-## 📸 Project Assets
+## Project Assets
 
 ### Images & Media
 
 | File | Description |
 |------|-------------|
-| `ten.png` | Teensy 4.1 microcontroller - the brain of TFCS-1 |
-| `rf.jpeg` | RadioLink R12F SBUS receiver test |
-| `icm.jpeg` | ICM-20948 9-DOF IMU (borrowed) |
-| `schematics.jpeg` | Wiring diagram for the flight controller |
+| `assets/ten.png` | Teensy 4.1 microcontroller - the brain of TFCS-1 |
+| `assets/rf.jpeg` | RadioLink R12F SBUS receiver test |
+| `assets/icm.jpeg` | ICM-20948 9-DOF IMU (borrowed) |
+| `assets/schematics.jpeg` | Wiring diagram for the flight controller |
 
 ### Videos
 
@@ -35,7 +35,7 @@
 | `TFCS-1_Stardance_Ailerons.mp4` | Aileron servo demo (Stardance submission) |
 | `ailerons test.mp4` | Aileron servo test footage |
 
-> **📁 Full Video Demos:** [Google Drive Folder](https://drive.google.com/drive/folders/199b-1cK7TjypQ-vlO30ZAJLWgoHDL5SH)
+> **Full Video Demos:** [Google Drive Folder](https://drive.google.com/drive/folders/199b-1cK7TjypQ-vlO30ZAJLWgoHDL5SH)
 
 ### Firmware
 
@@ -46,7 +46,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Why I Built This](#why-i-built-this)
 - [Story / Behind the Scenes](#story--behind-the-scenes)
@@ -72,7 +72,7 @@ I am a 16-year-old maker obsessed with flight. I did not start with a kit or a p
 This project exists because:
 - I want to **learn** flight controller tuning, sensor fusion, and embedded systems from first principles
 - I want to **open-source** every finding, failure, and fix so the next builder does not start from zero
-- I believe the best way to learn is to build, break, and rebuild — one crash at a time
+- I believe the best way to learn is to build, break, and rebuild - one crash at a time
 
 ---
 
@@ -80,11 +80,11 @@ This project exists because:
 
 ### The Beginning
 
-The Teensy 4.1 arrived from my tutor — a 600MHz beast I had been reading about for months. The first time the orange LED blinked, I knew this was real. Then came the ICM-20948, the fancy 9-DOF IMU that was supposed to be the heart of the system. It did not work. I2C scanner found it at `0x68`, but the moment I tried to read data, it hung. No pull-up resistors, maybe a logic level issue, maybe just inexperience. I spent hours staring at wires that refused to talk.
+The Teensy 4.1 arrived from my tutor - a 600MHz beast I had been reading about for months. The first time the orange LED blinked, I knew this was real. Then came the ICM-20948, the fancy 9-DOF IMU that was supposed to be the heart of the system. It did not work. I2C scanner found it at `0x68`, but the moment I tried to read data, it hung. No pull-up resistors, maybe a logic level issue, maybe just inexperience. I spent hours staring at wires that refused to talk.
 
 ### The Breakthrough
 
-I switched to the MPU-6050. Cheap, common, and suddenly — it just worked. Data flowed. Numbers moved when I tilted the board. I connected the first servo and watched a control surface respond to my hands. That moment, seeing physics turn into servo motion, is when TFCS-1 became more than a project. It became a flight controller.
+I switched to the MPU-6050. Cheap, common, and suddenly - it just worked. Data flowed. Numbers moved when I tilted the board. I connected the first servo and watched a control surface respond to my hands. That moment, seeing physics turn into servo motion, is when TFCS-1 became more than a project. It became a flight controller.
 
 ### The Reality Check
 
@@ -100,21 +100,21 @@ Because I learned from open-source projects. Because someone else out there is 1
 
 | Module | Status | Notes |
 |--------|--------|-------|
-| MPU-6050 Roll + Pitch | ✅ Done | Working reliably |
-| Elevator servo | ✅ Done | Pin 5, 40-140 deg |
-| Rudder servo | ✅ Done | Pin 6, 60-120 deg |
-| Aileron servos | ✅ Done | Pin 9 & 10, 40-140 deg |
-| Low-pass filter (ALPHA=0.15) | ✅ Done | Removes jitter |
-| Deadband (0.8 deg) | ✅ Done | Stops servo buzzing |
-| Serial telemetry | ✅ Done | 115200 baud |
-| Flight control logic | ✅ Done | Roll + Pitch stabilization |
-| RadioLink SBUS Receiver | ✅ Done | All 6 channels reading |
-| Teensy 4.1 integration | 🔄 In Progress | Borrowed unit |
-| ICM-20948 9-DOF fusion | 🔄 In Progress | Needs debugging |
-| SD card logging | ⏳ Coming Soon | High-speed CSV |
-| GPS (NEO-M8N) | ⏳ Coming Soon | Position tracking |
-| FPV (5.8GHz) | ⏳ Coming Soon | Camera + VTX |
-| Custom PCB | ⏳ Coming Soon | KiCad design |
+| MPU-6050 Roll + Pitch | Done | Working reliably |
+| Elevator servo | Done | Pin 5, 40-140 deg |
+| Rudder servo | Done | Pin 6, 60-120 deg |
+| Aileron servos | Done | Pin 9 & 10, 40-140 deg |
+| Low-pass filter (ALPHA=0.15) | Done | Removes jitter |
+| Deadband (0.8 deg) | Done | Stops servo buzzing |
+| Serial telemetry | Done | 115200 baud |
+| Flight control logic | Done | Roll + Pitch stabilization |
+| RadioLink SBUS Receiver | Done | All 6 channels reading |
+| Teensy 4.1 integration | In Progress | Borrowed unit |
+| ICM-20948 9-DOF fusion | In Progress | Needs debugging |
+| SD card logging | Coming Soon | High-speed CSV |
+| GPS (NEO-M8N) | Coming Soon | Position tracking |
+| FPV (5.8GHz) | Coming Soon | Camera + VTX |
+| Custom PCB | Coming Soon | KiCad design |
 
 **Test Platform:** E-flite Apprentice S1E (1500mm wingspan, 840kv motor)
 
@@ -123,6 +123,8 @@ Because I learned from open-source projects. Because someone else out there is 1
 ---
 
 ## Hardware
+
+![Teensy 4.1 Microcontroller](assets/ten.png)
 
 ### Compute & Avionics
 
@@ -136,6 +138,8 @@ Because I learned from open-source projects. Because someone else out there is 1
 | RadioLink Receiver | R12F | SBUS, 12 channels | Owned |
 | RadioLink Transmitter | T12D | 12 channels | Owned |
 
+![ICM-20948 9-DOF IMU](assets/icm.jpeg)
+
 ### Actuators
 
 | Component | Pin | Range | Status |
@@ -146,12 +150,14 @@ Because I learned from open-source projects. Because someone else out there is 1
 | Rudder | 6 | 60-120 deg | Owned |
 | ESC | - | 30A w/ BEC | Owned |
 
+![RadioLink R12F SBUS Receiver](assets/rf.jpeg)
+
 ### Power
 
 | Component | Specs | Status |
 |-----------|-------|--------|
 | UBEC | 7A, 5V output | Owned |
-| Battery | 4S 3000mAh | 🔜 Need to buy |
+| Battery | 4S 3000mAh | Need to buy |
 | Power Distribution | Custom board | Coming Soon |
 
 ### Future Additions
@@ -163,18 +169,20 @@ Because I learned from open-source projects. Because someone else out there is 1
 - [ ] Airspeed Sensor (MS4525DO)
 - [ ] Professional Barometer (BMP390/MS5611)
 
+![Wiring Diagram](assets/schematics.jpeg)
+
 ---
 
 ## Control Surfaces
 
 | Axis | Surface | Pin | Range | Response |
 |------|---------|-----|-------|----------|
-| Pitch | Elevator | 5 | 40-140 deg | Nose Down → UP |
-| Roll | Left Aileron | 9 | 40-140 deg | Tilt Left → UP |
-| Roll | Right Aileron | 10 | 40-140 deg | Tilt Left → DOWN |
-| Yaw | Rudder | 6 | 60-120 deg | Tilt Left → Left |
+| Pitch | Elevator | 5 | 40-140 deg | Nose Down -> UP |
+| Roll | Left Aileron | 9 | 40-140 deg | Tilt Left -> UP |
+| Roll | Right Aileron | 10 | 40-140 deg | Tilt Left -> DOWN |
+| Yaw | Rudder | 6 | 60-120 deg | Tilt Left -> Left |
 
-**Neutral position for all servos:** 90°
+**Neutral position for all servos:** 90 deg
 
 ---
 
@@ -187,7 +195,7 @@ Because I learned from open-source projects. Because someone else out there is 1
 | I2C Communication | Wire library @ 400kHz | Done |
 | Angle Calculation | Roll/Pitch from accelerometer | Done |
 | Digital Filtering | Low-pass filter (ALPHA = 0.15) | Done |
-| Deadband | 0.8° threshold | Done |
+| Deadband | 0.8 deg threshold | Done |
 | Servo Control | 4 servos (Ailerons, Elevator, Rudder) | Done |
 | Telemetry Output | Serial Monitor @ 115200 baud | Done |
 | SBUS Receiver | RadioLink R12F, 6 channels | Done |
@@ -199,7 +207,7 @@ Because I learned from open-source projects. Because someone else out there is 1
 | Loop Rate | 50Hz (20ms) |
 | Filter | Exponential Moving Average |
 | Alpha | 0.15 |
-| Deadband | 0.8° |
+| Deadband | 0.8 deg |
 | Telemetry Baud | 115200 |
 
 ### Key Code Snippet
@@ -238,9 +246,9 @@ elevatorPos = map(filteredPitch, -20, 20, 140, 40);
 
 | Test | Expected Behavior |
 |------|-------------------|
-| Hold board level | All servos at 90° |
-| Tilt nose down | Elevator goes UP (40°) |
-| Tilt nose up | Elevator goes DOWN (140°) |
+| Hold board level | All servos at 90 deg |
+| Tilt nose down | Elevator goes UP (40 deg) |
+| Tilt nose up | Elevator goes DOWN (140 deg) |
 | Tilt left | Left aileron UP, Right aileron DOWN |
 | Tilt right | Left aileron DOWN, Right aileron UP |
 
@@ -269,7 +277,7 @@ P:10.1 deg (Elev:65 deg) | R:0.0 deg (Rudd:90 deg) | A:65 deg
 |-----------|----------|
 | ICM-20948 not working | Switched to MPU-6050 |
 | Servo jitter | Added low-pass filter (ALPHA 0.15) |
-| Servo buzzing at level | Added deadband (0.8°) |
+| Servo buzzing at level | Added deadband (0.8 deg) |
 | Pin 8 not working with servo | Switched to Pin 5, 6, 9, 10 |
 | MPU not responding | Fixed wiring, added debug code |
 | Servos moving same direction | Used mirror mounting logic |
@@ -309,14 +317,14 @@ With funding from Stardance, my sensor suite will become a beast. The funding wi
 
 | # | Item | Description | Qty | Price (AED) | Price (USD) | Link |
 |---|------|-------------|-----|-------------|-------------|------|
-| 1 | SLONWAKE 1W VTX + 1500TVL Camera | 5.8GHz 48CH FPV Transmitter | 1 | 151.95 | 41.36 | 🔗 |
-| 2 | GY-63 MS5611 Barometer | High Precision Air Pressure Sensor | 1 | 16.69 | 4.54 | 🔗 |
-| 3 | MS4525DO Airspeed Sensor | Differential Pressure Module w/ Pitot Tube | 1 | 107.19 | 29.18 | 🔗 |
-| 4 | 4S 3000mAh LiPo Battery | 14.8V 60C RC Battery w/ XT60 | 1 | 141.86 | 38.62 | 🔗 |
-| 5 | SX1278 LoRa Ra-01 Module | 433MHz Long-range Telemetry (Pack of 2) | 2 | 19.60 | 5.34 | 🔗 |
-| 6 | BSS138 Logic Level Converter | Bi-Directional 4-Channel 3.3V-5V | 1 | 10.00 | 2.72 | 🔗 |
-| 7 | MPU-9250 9-Axle IMU | Gyro + Accelerometer + Magnetometer | 1 | 20.00 | 5.44 | 🔗 |
-| 8 | BMP280 Barometer | Temp + Humidity + Pressure (3.3V) | 1 | 6.02 | 1.64 | 🔗 |
+| 1 | SLONWAKE 1W VTX + 1500TVL Camera | 5.8GHz 48CH FPV Transmitter | 1 | 151.95 | 41.36 | [Link](#) |
+| 2 | GY-63 MS5611 Barometer | High Precision Air Pressure Sensor | 1 | 16.69 | 4.54 | [Link](#) |
+| 3 | MS4525DO Airspeed Sensor | Differential Pressure Module w/ Pitot Tube | 1 | 107.19 | 29.18 | [Link](#) |
+| 4 | 4S 3000mAh LiPo Battery | 14.8V 60C RC Battery w/ XT60 | 1 | 141.86 | 38.62 | [Link](#) |
+| 5 | SX1278 LoRa Ra-01 Module | 433MHz Long-range Telemetry (Pack of 2) | 2 | 19.60 | 5.34 | [Link](#) |
+| 6 | BSS138 Logic Level Converter | Bi-Directional 4-Channel 3.3V-5V | 1 | 10.00 | 2.72 | [Link](#) |
+| 7 | MPU-9250 9-Axle IMU | Gyro + Accelerometer + Magnetometer | 1 | 20.00 | 5.44 | [Link](#) |
+| 8 | BMP280 Barometer | Temp + Humidity + Pressure (3.3V) | 1 | 6.02 | 1.64 | [Link](#) |
 | 9 | AliExpress Shipping | Shipping Fee | 1 | 32.28 | 8.79 | - |
 | 10 | UAE Import Tax & Fees | Estimated Import Tax + Clearance | 1 | 40.00 | 10.90 | - |
 | | **TOTAL ITEMS** | | | **545.59** | **148.57** | |
@@ -353,7 +361,7 @@ With funding from Stardance, my sensor suite will become a beast. The funding wi
 
 ---
 
-## 🛩️ Testing Plan
+## Testing Plan
 
 Once the flight controller is fully assembled and tested on the bench, I will borrow a friend's RC plane to suit this all up and test it in real flight conditions. If everything goes according to plan, I will post a video of the flight. And hopefully, it won't crash lol.
 
@@ -382,7 +390,7 @@ This is open-source and contributions are welcome.
 
 ## Author
 
-**Rithish** — 16-year-old maker with a passion for flight and embedded systems
+**Rithish** - 16-year-old maker with a passion for flight and embedded systems
 
 - **GitHub:** [github.com/R1th1shwork](https://github.com/R1th1shwork)
 - **Project:** [github.com/R1th1shwork/TFCS-1](https://github.com/R1th1shwork/TFCS-1)
@@ -392,9 +400,9 @@ This is open-source and contributions are welcome.
 
 ## Acknowledgments
 
-- **My Tutor** — For lending critical components
-- **The Arduino Community** — For open-source libraries and support
-- **The Teensy Community** — For the incredible Teensy platform
+- **My Tutor** - For lending critical components
+- **The Arduino Community** - For open-source libraries and support
+- **The Teensy Community** - For the incredible Teensy platform
 
 ---
 
