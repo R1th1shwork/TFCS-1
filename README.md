@@ -23,10 +23,10 @@
 
 | File | Description |
 |------|-------------|
-| `assets/ten.png` | Teensy 4.1 microcontroller - the brain of TFCS-1 |
-| `assets/rf.jpeg` | RadioLink R12F SBUS receiver test |
-| `assets/icm.jpeg` | ICM-20948 9-DOF IMU (borrowed) |
-| `assets/schematics.jpeg` | Wiring diagram for the flight controller |
+| `Assets/ten.png` | Teensy 4.1 microcontroller - the brain of TFCS-1 |
+| `Assets/rf.jpeg` | RadioLink R12F SBUS receiver test |
+| `Assets/icm.jpeg` | ICM-20948 9-DOF IMU (borrowed) |
+| `Assets/schematics.jpeg` | Wiring diagram for the flight controller |
 
 ### Videos
 
@@ -52,6 +52,7 @@
 - [Story / Behind the Scenes](#story--behind-the-scenes)
 - [Current Status](#current-status)
 - [Hardware](#hardware)
+- [Wiring Instructions](#wiring-instructions)
 - [Control Surfaces](#control-surfaces)
 - [Software](#software)
 - [Setup](#setup)
@@ -124,7 +125,7 @@ Because I learned from open-source projects. Because someone else out there is 1
 
 ## Hardware
 
-![Teensy 4.1 Microcontroller](assets/ten.png)
+![Teensy 4.1 Microcontroller](Assets/ten.png)
 
 ### Compute & Avionics
 
@@ -138,7 +139,7 @@ Because I learned from open-source projects. Because someone else out there is 1
 | RadioLink Receiver | R12F | SBUS, 12 channels | Owned |
 | RadioLink Transmitter | T12D | 12 channels | Owned |
 
-![ICM-20948 9-DOF IMU](assets/icm.jpeg)
+![ICM-20948 9-DOF IMU](Assets/icm.jpeg)
 
 ### Actuators
 
@@ -150,7 +151,7 @@ Because I learned from open-source projects. Because someone else out there is 1
 | Rudder | 6 | 60-120 deg | Owned |
 | ESC | - | 30A w/ BEC | Owned |
 
-![RadioLink R12F SBUS Receiver](assets/rf.jpeg)
+![RadioLink R12F SBUS Receiver](Assets/rf.jpeg)
 
 ### Power
 
@@ -169,7 +170,66 @@ Because I learned from open-source projects. Because someone else out there is 1
 - [ ] Airspeed Sensor (MS4525DO)
 - [ ] Professional Barometer (BMP390/MS5611)
 
-![Wiring Diagram](assets/schematics.jpeg)
+---
+
+## Wiring Instructions
+
+> **Note:** All documentation below was recorded offline during a 4-hour flight. Every wire, every pin, and every color was documented by hand as I built this system.
+
+### MPU-6050 / ICM-20948 (IMU)
+
+| Pin | Teensy 4.1 | Arduino Uno | Wire Color |
+|-----|------------|-------------|------------|
+| VCC | 3.3V | 3.3V | Red |
+| GND | GND | GND | Black |
+| SDA | 18 | A4 | Green |
+| SCL | 19 | A5 | Blue |
+
+### RadioLink R12F (SBUS)
+
+| Pin | Teensy 4.1 | Arduino Uno | Wire Color |
+|-----|------------|-------------|------------|
+| VCC | 5V | 5V | Red |
+| GND | GND | GND | Black |
+| SBUS Signal | Pin 3 | Pin 3 | Yellow |
+
+### Servos (Control Surfaces)
+
+| Component | Teensy 4.1 | Arduino Uno | Wire Color |
+|-----------|------------|-------------|------------|
+| Elevator Signal | Pin 5 | Pin 5 | Orange |
+| Rudder Signal | Pin 6 | Pin 6 | Orange |
+| Left Aileron Signal | Pin 9 | Pin 9 | Orange |
+| Right Aileron Signal | Pin 10 | Pin 10 | Orange |
+| Servo VCC (All) | 5V (External BEC) | 5V (External BEC) | Red |
+| Servo GND (All) | GND | GND | Brown |
+
+### Power
+
+| Pin | Teensy 4.1 | Arduino Uno | Wire Color |
+|-----|------------|-------------|------------|
+| UBEC Input | Battery (2-4S) | Battery (2-4S) | Red/Black |
+| UBEC Output (5V) | VIN | 5V | Red |
+| UBEC GND | GND | GND | Black |
+
+### Quick Reference Table
+
+| Component | Power | GND | Signal Pin |
+|-----------|-------|-----|------------|
+| MPU-6050 | 3.3V | GND | SDA->A4, SCL->A5 |
+| ICM-20948 | 3.3V | GND | SDA->18, SCL->19 |
+| RadioLink R12F | 5V | GND | SBUS->Pin 3 |
+| Elevator Servo | 5V | GND | Pin 5 |
+| Rudder Servo | 5V | GND | Pin 6 |
+| Left Aileron | 5V | GND | Pin 9 |
+| Right Aileron | 5V | GND | Pin 10 |
+| ESC | Battery | GND | - |
+
+### End Goal Schematic
+
+This is the target wiring layout for the fully integrated flight controller. We are not here yet, but this is where we are headed.
+
+![End Goal Wiring Schematic](Assets/schematics.jpeg)
 
 ---
 
