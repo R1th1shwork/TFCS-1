@@ -375,21 +375,20 @@ With funding from Stardance, my sensor suite will become a beast. The funding wi
 
 ### Full BOM
 
-| # | Item | Description | Qty | Price (AED) | Price (USD) | Link |
-|---|------|-------------|-----|-------------|-------------|------|
-| 1 | SLONWAKE 1W VTX + 1500TVL Camera | 5.8GHz 48CH FPV Transmitter | 1 | 151.95 | 41.36 | [Link](#) |
-| 2 | GY-63 MS5611 Barometer | High Precision Air Pressure Sensor | 1 | 16.69 | 4.54 | [Link](#) |
-| 3 | MS4525DO Airspeed Sensor | Differential Pressure Module w/ Pitot Tube | 1 | 107.19 | 29.18 | [Link](#) |
-| 4 | 4S 3000mAh LiPo Battery | 14.8V 60C RC Battery w/ XT60 | 1 | 141.86 | 38.62 | [Link](#) |
-| 5 | SX1278 LoRa Ra-01 Module | 433MHz Long-range Telemetry (Pack of 2) | 2 | 19.60 | 5.34 | [Link](#) |
-| 6 | BSS138 Logic Level Converter | Bi-Directional 4-Channel 3.3V-5V | 1 | 10.00 | 2.72 | [Link](#) |
-| 7 | MPU-9250 9-Axle IMU | Gyro + Accelerometer + Magnetometer | 1 | 20.00 | 5.44 | [Link](#) |
-| 8 | BMP280 Barometer | Temp + Humidity + Pressure (3.3V) | 1 | 6.02 | 1.64 | [Link](#) |
-| 9 | AliExpress Shipping | Shipping Fee | 1 | 32.28 | 8.79 | - |
-| 10 | UAE Import Tax & Fees | Estimated Import Tax + Clearance | 1 | 40.00 | 10.90 | - |
-| | **TOTAL ITEMS** | | | **545.59** | **148.57** | |
-| | **SHIPPING + TAX** | | | **72.28** | **19.69** | |
-| | **GRAND TOTAL** | | | **617.87** | **168.26** | |
+| Item | Description | Qty | Price (AED) | Price (USD) | Link |
+|------|-------------|-----|-------------|-------------|------|
+| SLONWAKE 1W VTX + 1500TVL Camera | 5.8GHz 48CH FPV Transmitter with Camera | 1 | 151.95 | 41.36 | [AliExpress](https://ar.aliexpress.com/item/1005008177732104.html) |
+| GY-63 MS5611 Barometer | High Precision Air Pressure Sensor Module | 1 | 16.69 | 4.54 | [AliExpress](https://ar.aliexpress.com/item/32981169861.html) |
+| MS4525DO Airspeed Sensor | Differential Pressure Module with Pitot Tube Kit | 1 | 107.19 | 29.18 | [AliExpress](https://ar.aliexpress.com/item/1005009943453550.html) |
+| 4S 3000mAh LiPo Battery | 14.8V 60C RC Battery with XT60 Connector | 1 | 141.86 | 38.62 | [AliExpress](https://ar.aliexpress.com/item/1005010778424365.html) |
+| SX1278 LoRa Ra-01 Module | 433MHz Long-range Telemetry Module (Pack of 2) | 2 | 19.60 | 5.34 | [AliExpress](https://ar.aliexpress.com/item/1005007345198584.html) |
+| BSS138 Logic Level Converter | Bi-Directional 4-Channel 3.3V-5V | 1 | 10.00 | 2.72 | [Noon](https://www.noon.com/uae-en/bss138-logic-level-converter-bi-directional-4-channel-3-3v-5v-bi-directional/ZF14BBDADB787D14A80DAZ/p/) |
+| MPU-9250 9-Axle IMU | Gyro + Accelerometer + Magnetometer Sensor | 1 | 20.00 | 5.44 | [Noon](https://www.noon.com/uae-en/mpu-9250-gy-9250-9-axle-16-bit-gyroscope-acceleration-magnetic-sensor-3-5v/ZAC72641E953208FED97AZ/p/) |
+| BMP280 Barometer | Temperature + Humidity + Atmospheric Pressure Sensor (3.3V) | 1 | 6.02 | 1.64 | [AliExpress](https://ar.aliexpress.com/item/1005012294605575.html) |
+| AliExpress Shipping | Shipping Fee for AliExpress Order | 1 | 32.28 | 8.79 | - |
+| UAE Import Tax | Estimated Import Tax & Clearance Fees (5% + Handling) | 1 | 40.00 | 10.90 | - |
+| **TOTAL ITEMS** | | | | | |
+| **GRAND TOTAL (AED)** | | | **541.38** | **147.50** | |
 
 *Exchange Rate: 1 USD = 3.6725 AED*
 
