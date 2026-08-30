@@ -2,13 +2,43 @@
 
 **Project:** TFCS-1: Teensy Flight Computer & Climate Suite  
 **Author:** Rithish (16-year-old maker)  
-**Total Time Spent:** ~9 hours 20 minutes (logged)
+**Total Time Spent:** ~10 hours 17 minutes (logged)
 
 ---
 
 ## 📖 About This Journal
 
 This journal documents the complete journey of building TFCS-1 - from unboxing the Teensy 4.1 to finalizing the BOM for Stardance submission. Every dev log represents a real session of work, including successes, failures, and lessons learned.
+
+---
+
+## Dev Log #15 - MPU + SBUS + PID Code Ready!
+
+**Date:** August 30, 2026  
+**Time Spent:** 39m  
+**✅ Checklist:**
+- [x] Full MPU + SBUS + PID code written
+- [x] Code uploaded to GitHub
+- [x] MB102 power supply researched
+- [ ] Aileron testing (tomorrow)
+
+**Details:**  
+Wrote and uploaded the full MPU + SBUS + PID code to GitHub. Got roll and pitch data from MPU, sticks from RadioLink, and PID corrections calculated. Tomorrow I'll test it properly with just the ailerons to check if the self-correcting actually works. Also did some research on the MB102 power supply and the Uno to see if it helps with bench testing. Just research for now, nothing tested yet. But good progress overall. More testing tomorrow.
+
+---
+
+## Dev Log #14 - Mercury OS Planning (Travel Mode)
+
+**Date:** August 29, 2026  
+**Time Spent:** 18m  
+**✅ Checklist:**
+- [x] Mercury OS planned out
+- [x] Failsafe priority system designed
+- [x] Notes taken for all features
+- [ ] Code implementation (pending)
+
+**Details:**  
+Traveling right now so no hardware today, had to work with my phone but I used the time to plan out my own FC OS called Mercury and also how safefail priority is a main thing. Just planned out and took notes but the plans and the direction is solid. The OS will handle failsafe first, then flight control, sensor fusion, telemetry, logging, and housekeeping in a priority-based system.
 
 ---
 
@@ -201,10 +231,10 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 
 | Category | Total |
 |----------|-------|
-| **Total Time Logged** | ~9 hours 20 minutes |
-| **Dev Log Entries** | 13 |
-| **Days Worked** | 13 days |
-| **Key Milestones** | Teensy working, MPU-6050 working, Servos working, RadioLink working, BOM finalized, Project shift complete |
+| **Total Time Logged** | ~10 hours 17 minutes |
+| **Dev Log Entries** | 15 |
+| **Days Worked** | 15 days |
+| **Key Milestones** | Teensy working, MPU-6050 working, Servos working, RadioLink working, BOM finalized, Project shift complete, Mercury OS planned |
 
 ---
 
@@ -219,6 +249,8 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 | RadioLink receiver working | #11 | Aug 26 |
 | BOM finalized | #12 | Aug 27 |
 | Project shift & resubmitted | #13 | Aug 28 |
+| Mercury OS planned | #14 | Aug 29 |
+| MPU + SBUS + PID code ready | #15 | Aug 30 |
 
 ---
 
@@ -231,6 +263,7 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 5. **Ask for help** - My tutor lending me parts made this possible
 6. **Failure is part of learning** - The ICM didn't work, but switching to MPU-6050 got results
 7. **Listen to feedback** - Shifting project direction based on Stardance feedback was the right call
+8. **Plan before coding** - Mercury OS planning saved time and confusion
 
 ---
 
@@ -247,4 +280,4 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 
 ---
 
-**Last Updated:** August 28, 2026
+**Last Updated:** August 30, 2026
