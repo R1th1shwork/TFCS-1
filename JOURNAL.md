@@ -12,7 +12,7 @@ This journal documents the complete journey of building TFCS-1 - from unboxing t
 
 ---
 
-## Dev Log #18 - Sensor Testing
+## Dev Log #17 - Sensor Testing
 
 **Date:** September 1, 2026  
 **Time Spent:** 29m  
@@ -30,7 +30,7 @@ Tested the PMS5003 and it works. Plan is to add sensors one by one so troublesho
 
 ---
 
-## Dev Log #17 - RF Packet Designed & Code Ready!
+## Dev Log #16 - RF Packet Designed & Code Ready!
 
 **Date:** August 31, 2026  
 **Time Spent:** 24m  
@@ -45,21 +45,6 @@ Tested the PMS5003 and it works. Plan is to add sensors one by one so troublesho
 
 **Details:**  
 Today I finished designing the full RF telemetry packet for the NRF24L01. Got all sensors packed into 55 bytes - MPU6050, BN-880 GPS, SCD40, BME680, PMS5003, MQ135, and MS4525DO. All neatly packed and ready to send to the ground station. The full integration code is written with SD logging, web server, and everything. Will test it all tomorrow on the bench and upload to GitHub once it's working.
-
----
-
-## Dev Log #16 - Mercury OS Planning (Travel Mode)
-
-**Date:** August 29, 2026  
-**Time Spent:** 18m  
-**✅ Checklist:**
-- [x] Mercury OS planned out
-- [x] Failsafe priority system designed
-- [x] Notes taken for all features
-- [ ] Code implementation (pending)
-
-**Details:**  
-Traveling right now so no hardware today, had to work with my phone but I used the time to plan out my own FC OS called Mercury and also how safefail priority is a main thing. Just planned out and took notes but the plans and the direction is solid. The OS will handle failsafe first, then flight control, sensor fusion, telemetry, logging, and housekeeping in a priority-based system.
 
 ---
 
@@ -283,7 +268,7 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 | Category | Total |
 |----------|-------|
 | **Total Time Logged** | ~11 hours 10 minutes |
-| **Dev Log Entries** | 18 |
+| **Dev Log Entries** | 17 |
 | **Days Worked** | 17 days |
 | **Key Milestones** | Teensy working, MPU-6050 working, Servos working, RadioLink working, BOM finalized, Project shift complete, Mercury OS planned, RF packet designed, Sensor testing started |
 
@@ -302,8 +287,8 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 | Project shift & resubmitted | #13 | Aug 28 |
 | Mercury OS planned | #14 | Aug 29 |
 | MPU + SBUS + PID code ready | #15 | Aug 30 |
-| RF packet designed | #17 | Aug 31 |
-| Sensor testing started | #18 | Sep 1 |
+| RF packet designed | #16 | Aug 31 |
+| Sensor testing started | #17 | Sep 1 |
 
 ---
 
