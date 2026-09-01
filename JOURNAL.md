@@ -2,13 +2,64 @@
 
 **Project:** TFCS-1: Teensy Flight Computer & Climate Suite  
 **Author:** Rithish (16-year-old maker)  
-**Total Time Spent:** ~10 hours 17 minutes (logged)
+**Total Time Spent:** ~11 hours 10 minutes (logged)
 
 ---
 
 ## 📖 About This Journal
 
 This journal documents the complete journey of building TFCS-1 - from unboxing the Teensy 4.1 to finalizing the BOM for Stardance submission. Every dev log represents a real session of work, including successes, failures, and lessons learned.
+
+---
+
+## Dev Log #18 - Sensor Testing
+
+**Date:** September 1, 2026  
+**Time Spent:** 29m  
+**✅ Checklist:**
+- [x] PMS5003 tested and working
+- [x] SCD40 wiring mapped out
+- [x] MQ-135 wiring mapped out
+- [x] Test code written for SCD40 + MQ-135
+- [ ] Combine all sensors with RF telemetry (next step)
+- [ ] SD logging integration (next step)
+- [ ] OLED receiver integration (next step)
+
+**Details:**  
+Tested the PMS5003 and it works. Plan is to add sensors one by one so troubleshooting is easier. Mapped out wiring for SCD40 (I2C bus) and MQ-135 (A0, 5V). Wrote test code that reads CO2, temp, humidity from SCD40 and raw gas readings from MQ-135. MQ-135 will be used as a relative gas-trend sensor unless calibrated later. Next up is combining everything with RF telemetry, SD logging, and OLED.
+
+---
+
+## Dev Log #17 - RF Packet Designed & Code Ready!
+
+**Date:** August 31, 2026  
+**Time Spent:** 24m  
+**✅ Checklist:**
+- [x] RF telemetry packet designed (55 bytes)
+- [x] All sensors packed into packet
+- [x] Full integration code written
+- [x] SD logging included
+- [x] Web server included
+- [ ] Bench testing (tomorrow)
+- [ ] Upload to GitHub (after testing)
+
+**Details:**  
+Today I finished designing the full RF telemetry packet for the NRF24L01. Got all sensors packed into 55 bytes - MPU6050, BN-880 GPS, SCD40, BME680, PMS5003, MQ135, and MS4525DO. All neatly packed and ready to send to the ground station. The full integration code is written with SD logging, web server, and everything. Will test it all tomorrow on the bench and upload to GitHub once it's working.
+
+---
+
+## Dev Log #16 - Mercury OS Planning (Travel Mode)
+
+**Date:** August 29, 2026  
+**Time Spent:** 18m  
+**✅ Checklist:**
+- [x] Mercury OS planned out
+- [x] Failsafe priority system designed
+- [x] Notes taken for all features
+- [ ] Code implementation (pending)
+
+**Details:**  
+Traveling right now so no hardware today, had to work with my phone but I used the time to plan out my own FC OS called Mercury and also how safefail priority is a main thing. Just planned out and took notes but the plans and the direction is solid. The OS will handle failsafe first, then flight control, sensor fusion, telemetry, logging, and housekeeping in a priority-based system.
 
 ---
 
@@ -231,10 +282,10 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 
 | Category | Total |
 |----------|-------|
-| **Total Time Logged** | ~10 hours 17 minutes |
-| **Dev Log Entries** | 15 |
-| **Days Worked** | 15 days |
-| **Key Milestones** | Teensy working, MPU-6050 working, Servos working, RadioLink working, BOM finalized, Project shift complete, Mercury OS planned |
+| **Total Time Logged** | ~11 hours 10 minutes |
+| **Dev Log Entries** | 18 |
+| **Days Worked** | 17 days |
+| **Key Milestones** | Teensy working, MPU-6050 working, Servos working, RadioLink working, BOM finalized, Project shift complete, Mercury OS planned, RF packet designed, Sensor testing started |
 
 ---
 
@@ -251,6 +302,8 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 | Project shift & resubmitted | #13 | Aug 28 |
 | Mercury OS planned | #14 | Aug 29 |
 | MPU + SBUS + PID code ready | #15 | Aug 30 |
+| RF packet designed | #17 | Aug 31 |
+| Sensor testing started | #18 | Sep 1 |
 
 ---
 
@@ -264,6 +317,8 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 6. **Failure is part of learning** - The ICM didn't work, but switching to MPU-6050 got results
 7. **Listen to feedback** - Shifting project direction based on Stardance feedback was the right call
 8. **Plan before coding** - Mercury OS planning saved time and confusion
+9. **Add sensors one at a time** - Makes troubleshooting much easier
+10. **MQ-135 is a relative sensor** - Needs calibration for accurate readings
 
 ---
 
@@ -280,4 +335,4 @@ So today was the first real day of the TFCS-1 project and honestly it was a mix 
 
 ---
 
-**Last Updated:** August 30, 2026
+**Last Updated:** September 1, 2026
