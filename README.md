@@ -327,6 +327,7 @@ The current schematic has now been added to the repository at:
 ```
 Codes/New FC.kicad_sch
 ```
+![schematics](Assets/schematics.jpeg)
 
 This file represents the current electrical architecture and is being updated as the sensor suite is tested. It includes the controller, power rails, sensor interfaces, receiver input, telemetry interfaces, and servo outputs.
 
